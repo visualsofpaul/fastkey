@@ -18,13 +18,17 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["content-scripts/main.js"],
+      "js": [
+        "content-scripts/main.js",
+        "content-scripts/scrambler.js",
+        "content-scripts/password.js"
+      ],
       "css": [
         "styles/main.css",
         "styles/_colors.css",
         "styles/_font-family.css",
         "styles/_font-sizes.css",
-        "styles/_fonts.css"
+        "styles/remixicon.css"
       ]
     }
   ]

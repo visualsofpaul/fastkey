@@ -1,4 +1,5 @@
-.popup-container {
+/* Popup */
+.fastkey-popup-container {
   position: fixed;
   top: 0;
   left: 0;
@@ -10,20 +11,99 @@
   z-index: 1000000000;
 }
 
-.popup {
+.fastkey-popup-container::selection {
+  background-color: var(--color-primary);
+  color: #161617;
+}
+
+.fastkey-popup {
   position: relative;
-  margin: 2rem 2rem 0 0;
-  width: fit-content;
+  margin: 1rem 1rem 0 0;
+  width: 24rem;
   height: fit-content;
   background-color: var(--color-background);
   font-family: var(--font-family);
   z-index: 5;
+  border-radius: 1rem;
+  border: 0.1rem solid var(--color-surface);
+  filter: drop-shadow(0 0.2rem 4rem rgba(19, 23, 61, 0.2));
+  overflow: hidden;
 }
 
-.popup > header > figure > h1 {
-  color: var(--color-text-primary);
-  font-size: var(--font-size-m);
-  line-height: var(--line-height-xs);
+/* Tab */
+.fastkey-popup > .tab {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 0.1rem solid var(--color-surface);
+  padding: 1rem;
+}
+
+.fastkey-popup > .tab > figure {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
   margin: 0;
-  padding: 0.5rem;
+}
+
+.fastkey-popup > .tab > figure > img {
+  height: var(--font-size-l);
+  width: var(--font-size-l);
+}
+
+.fastkey-popup > .tab > figure > h2 {
+  font-size: var(--font-size-m);
+  color: var(--color-text-primary);
+  font-weight: 600;
+  line-height: var(--line-height-xs);
+}
+
+.fastkey-popup > .tab > .close-button {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-l);
+  cursor: pointer;
+}
+
+/* Content */
+.fastkey-popup > .content {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Output */
+.output {
+  height: 3rem;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  background-color: var(--color-surface);
+  border-radius: 0.5rem;
+  font-size: var(--font-size-s);
+  color: var(--color-text-primary);
+  font-weight: 400;
+  line-height: var(--line-height-s);
+}
+
+/* Button */
+.button {
+  height: 3rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-primary);
+  color: #161617;
+  font-size: var(--font-size-s);
+  font-weight: 400;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: filter 0.2s;
+  outline: none;
+  border: none;
+}
+
+.button:hover {
+  filter: brightness(0.9);
 }
