@@ -1,5 +1,5 @@
 @font-face {
   font-family: "Mona-Sans";
   font-display: swap;
-  src: url("../assets/fonts/Mona-Sans.ttf");
+  src: url("{{fontsURL}}");
 }
