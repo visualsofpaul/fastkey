@@ -1,0 +1,18 @@
+.popup {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  width: fit-content;
+  height: fit-content;
+  background-color: var(--color-background);
+  z-index: 1000;
+  font-family: var(--font-family);
+}
+
+.popup > h1 {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-xs);
+  margin: 0;
+  padding: 0.5rem;
+}

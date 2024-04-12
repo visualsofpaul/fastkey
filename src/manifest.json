@@ -1,0 +1,31 @@
+{
+  "name": "FastKey - Password Generator",
+  "description": "An easy-to-use Chrome extension which generates save passwords.",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "action": {
+    "default_icon": {
+      "128": "./assets/images/icon-128.png"
+    },
+    "default_title": "FastKey"
+  },
+  "icons": {
+    "128": "./assets/images/icon-128.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content-scripts/main.js"],
+      "css": [
+        "styles/main.css",
+        "styles/_colors.css",
+        "styles/_font-family.css",
+        "styles/_font-sizes.css",
+        "styles/_fonts.css"
+      ]
+    }
+  ]
+}
