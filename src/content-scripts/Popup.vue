@@ -28,7 +28,7 @@
         ></i>
       </header>
       <section class="content">
-        <div class="output" id="output"></div>
+        <Output id="output"></Output>
         <button class="button" @click="generatePassword">
           Generate password
         </button>
@@ -44,6 +44,9 @@ import "../styles/_font-family.css";
 import "../styles/_font-sizes.css";
 import "../styles/main.css";
 import "../styles/remixicon.css";
+
+// Import components
+import Output from "../components/Output.vue";
 
 // Import classes
 import Scrambler from "./scrambler.js";

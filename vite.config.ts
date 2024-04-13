@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import { chromeExtension } from "vite-plugin-chrome-extension";
+import Components from "unplugin-vue-components/vite";
 
 export default defineConfig({
   build: {
@@ -8,5 +9,11 @@ export default defineConfig({
       input: "src/manifest.json",
     },
   },
-  plugins: [vue(), chromeExtension() as any],
+  plugins: [
+    vue(),
+    Components({
+      extensions: ["vue"],
+    }),
+    chromeExtension() as any,
+  ],
 });
