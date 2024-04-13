@@ -8,5 +8,6 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Output: typeof import('./src/components/Output.vue')['default']
+    ThemeSwitch: typeof import('./src/components/ThemeSwitch.vue')['default']
   }
 }
