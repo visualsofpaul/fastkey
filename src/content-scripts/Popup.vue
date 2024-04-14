@@ -1,8 +1,4 @@
 <template>
-  <link
-    href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
-    rel="stylesheet"
-  />
   <style v-if="fontLink !== undefined">
     @font-face {
       font-family: "Mona-Sans";
@@ -24,7 +20,7 @@
           </figure>
         </aside>
         <aside>
-          <ThemeSwitch @toggle-theme="toggleTheme"></ThemeSwitch>
+          <ThemeSwitch :theme="theme" @toggle-theme="toggleTheme"></ThemeSwitch>
           <figure class="close-button">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -52,6 +48,7 @@
 
 <script>
 // Import styles
+import "../styles/_fonts.css";
 import "../styles/_colors.css";
 import "../styles/_font-family.css";
 import "../styles/_font-sizes.css";
@@ -72,6 +69,8 @@ export default {
       fontLink: undefined,
       password: null,
       scrambler: null,
+      extensionID: null,
+      theme: null,
     };
   },
   methods: {
@@ -88,8 +87,6 @@ export default {
     },
 
     async generatePassword() {
-      this.scrambler.reset();
-
       this.scrambler.scramble(
         await this.password.generate({
           length: 32,
@@ -105,6 +102,26 @@ export default {
 
       popup.classList.toggle("dark", darkMode);
       popup.classList.toggle("light", !darkMode);
+
+      // Save the theme to storage
+      chrome.runtime.sendMessage(
+        {
+          type: "setThemeToStorage",
+          theme: darkMode ? "dark" : "light",
+        },
+        (response) => {
+          console.log("Antwort:", response);
+        }
+      );
+    },
+
+    setTheme(theme) {
+      this.theme = theme;
+
+      const popup = document.querySelector(".fastkey-popup");
+
+      popup.classList.toggle("dark", theme === "dark");
+      popup.classList.toggle("light", theme === "light");
     },
   },
   mounted() {
@@ -113,7 +130,10 @@ export default {
 
     this.generatePassword();
 
-    this.fontLink = chrome.runtime.getURL("/fonts/Mona-Sans.ttf");
+    // Get the theme from storage
+    chrome.runtime.sendMessage({ type: "getThemeFromStorage" }, (response) => {
+      this.setTheme(response);
+    });
   },
 };
 </script>

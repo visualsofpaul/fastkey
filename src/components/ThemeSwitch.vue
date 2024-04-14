@@ -30,6 +30,10 @@
 <script>
 export default {
   name: "ThemeSwitch",
+  props: {
+    theme: String,
+    required: true,
+  },
   data() {
     return {
       darkMode: true,
@@ -39,6 +43,14 @@ export default {
     toggleTheme() {
       this.darkMode = !this.darkMode;
       this.$emit("toggle-theme", this.darkMode);
+    },
+  },
+  watch: {
+    theme: {
+      immediate: true,
+      handler(newTheme) {
+        this.darkMode = newTheme === "dark";
+      },
     },
   },
 };

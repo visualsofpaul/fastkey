@@ -28,8 +28,15 @@
         "styles/_colors.css",
         "styles/_font-family.css",
         "styles/_font-sizes.css",
-        "styles/remixicon.css"
+        "styles/_fonts.css"
       ]
     }
-  ]
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["fonts/*.ttf"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "permissions": ["storage"]
 }

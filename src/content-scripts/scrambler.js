@@ -29,10 +29,6 @@ export default class Scramble {
     });
   }
 
-  reset() {
-    this.output.textContent = "";
-  }
-
   generateCharacterList(character) {
     return Array.from({ length: this.rotations - 1 }, () => {
       return this.characters[
