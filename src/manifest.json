@@ -25,6 +25,7 @@
       ],
       "css": [
         "styles/main.css",
+        "styles/switch.css",
         "styles/_colors.css",
         "styles/_font-family.css",
         "styles/_font-sizes.css",

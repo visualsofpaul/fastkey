@@ -1,13 +1,13 @@
 :root {
   /* Font sizes */
-  --font-size-xs: clamp(0.625rem, 0.8rem, 1rem);
-  --font-size-s: clamp(0.8rem, 1rem, 1.25rem);
-  --font-size-m: clamp(1rem, 1.25rem, 1.5625rem);
-  --font-size-l: clamp(1.25rem, 1.5625rem, 22.015625rem);
-  --font-size-xl: clamp(1.5625rem, 2.015625rem, 22.44125rem);
-  --font-size-2xl: clamp(2.015625rem, 2.44125rem, 3.051875rem);
-  --font-size-3xl: clamp(2.44125rem, 3.051875rem, 3.815rem);
-  --font-size-4xl: clamp(3.051875rem, 3.815rem, 4.76875rem);
+  --font-size-xs: 0.8rem;
+  --font-size-s: 1rem;
+  --font-size-m: 1.25rem;
+  --font-size-l: 1.5625rem;
+  --font-size-xl: 2.015625rem;
+  --font-size-2xl: 2.44125rem;
+  --font-size-3xl: 3.051875rem;
+  --font-size-4xl: 3.815rem;
 
   /* Line-heights */
   --line-height-xs: 130%;

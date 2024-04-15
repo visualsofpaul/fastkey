@@ -1,5 +1,7 @@
 <template>
-  <div :class="id" :id="id"></div>
+  <div :class="id" :id="id">
+    <p :class="id + '-password'" :id="id + '-password'"></p>
+  </div>
 </template>
 
 <script>

@@ -37,7 +37,39 @@
         </aside>
       </header>
       <section class="content">
-        <Output id="output"></Output>
+        <article>
+          <h2>Your password</h2>
+          <Output id="output"></Output>
+        </article>
+        <article>
+          <h2>Settings</h2>
+          <ul>
+            <li>
+              <Switch
+                name="numbers"
+                @change="updateSettings('numbers')"
+                checked
+              ></Switch>
+              <p>Numbers</p>
+            </li>
+            <li>
+              <Switch
+                name="letters"
+                @change="updateSettings('letters')"
+                checked
+              ></Switch>
+              <p>Letters</p>
+            </li>
+            <li>
+              <Switch
+                name="specialCharacters"
+                @change="updateSettings('specialCharacters')"
+                checked
+              ></Switch>
+              <p>Special characters</p>
+            </li>
+          </ul>
+        </article>
         <button class="button" @click="generatePassword">
           Generate password
         </button>
@@ -53,10 +85,12 @@ import "../styles/_colors.css";
 import "../styles/_font-family.css";
 import "../styles/_font-sizes.css";
 import "../styles/main.css";
+import "../styles/switch.css";
 
 // Import components
 import Output from "../components/Output.vue";
 import ThemeSwitch from "../components/ThemeSwitch.vue";
+import Switch from "../components/Switch.vue";
 
 // Import classes
 import Scrambler from "./scrambler.js";
@@ -71,6 +105,12 @@ export default {
       scrambler: null,
       extensionID: null,
       theme: null,
+      settings: {
+        length: 32,
+        numbers: true,
+        letters: true,
+        specialCharacters: true,
+      },
     };
   },
   methods: {
@@ -87,14 +127,7 @@ export default {
     },
 
     async generatePassword() {
-      this.scrambler.scramble(
-        await this.password.generate({
-          length: 32,
-          numbers: true,
-          letters: true,
-          specialCharacters: true,
-        })
-      );
+      this.scrambler.scramble(await this.password.generate(this.settings));
     },
 
     toggleTheme(darkMode) {
@@ -123,9 +156,16 @@ export default {
       popup.classList.toggle("dark", theme === "dark");
       popup.classList.toggle("light", theme === "light");
     },
+
+    updateSettings(setting) {
+      this.settings[setting] = !this.settings[setting];
+    },
   },
   mounted() {
-    this.scrambler = new Scrambler(4, document.getElementById("output"));
+    this.scrambler = new Scrambler(
+      4,
+      document.getElementById("output-password")
+    );
     this.password = new Password();
 
     this.generatePassword();
