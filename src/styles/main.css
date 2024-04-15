@@ -199,6 +199,7 @@
   color: var(--color-text-primary);
   font-weight: 400;
   line-height: var(--line-height-s);
+  margin: 0;
 }
 
 /* Output */
